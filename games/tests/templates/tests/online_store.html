@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="form-group">
+  <div class="p-2">
+  <h2 class="mb-4">{{ onlinegamestore.store_name }}</h2>
+    <div class="row mb-2">
+      <div class="col-2">
+        <label class="form-control-label font-bold mr-4" style="font-weight: bold"> Games </label>
+        <label class="float-right">:</label>
+      </div>
+      <div class="col-8">
+        <label class="form-control-label text-bold">{{onlinegamestore.game.game_name}}</label>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-2">
+        <label class="form-control-label font-bold mr-4" style="font-weight: bold"> Link </label>
+        <label class="float-right">:</label>
+      </div>
+      <div class="col-8">
+        <a href="{{onlinegamestore.store_link}}">{{onlinegamestore.store_link}}</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

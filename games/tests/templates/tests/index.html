@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %} 
+{% if latest_game_list %}
+<h3>List of Game</h3>
+<ul>
+  {% for game in latest_game_list %}
+  <li><a href="{% url 'tests:detail' game.id %}">{{ game.game_name }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No games are available.</p>
+{% endif %} {% endblock %}

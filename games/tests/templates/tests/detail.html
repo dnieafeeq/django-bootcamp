@@ -1,0 +1,72 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="form-group">
+  <div class="p-2">
+  <h2 class="mb-4">{{ game.game_name }}</h2>
+    <div class="row mb-2">
+      <div class="col-5">
+        <label class="form-control-label font-bold mr-4">{{game.game_des}}</label>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-2">
+        <label class="form-control-label font-bold mr-4" style="font-weight: bold"> Developer </label>
+        <label class="float-right">:</label>
+      </div>
+      <div class="col-8">
+        <label class="form-control-label text-bold">{{game.dev_company}}</label>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-2">
+        <label class="form-control-label font-bold mr-4" style="font-weight: bold"> Publisher </label>
+        <label class="float-right">:</label>
+      </div>
+      <div class="col-8">
+        <label class="form-control-label text-bold">{{game.publisher}}</label>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-2">
+        <label class="form-control-label font-bold mr-4" style="font-weight: bold"> Genre </label>
+        <label class="float-right">:</label>
+      </div>
+      <div class="col-8">
+        <label class="form-control-label text-bold">{{game.get_game_genre_display}}</label>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-2">
+        <label class="form-control-label font-bold mr-4" style="font-weight: bold"> Platform </label>
+        <label class="float-right">:</label>
+      </div>
+      <div class="col-8">
+        <label class="form-control-label text-bold">{{game.game_platform}}</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form action="{% url 'tests:like' game.pk %}" method="post">
+  {% csrf_token %} {% if liked %}
+  <button
+    type="submit"
+    name="game_id"
+    value="{{ game.id }}"
+    class="btn btn-success btn-sm"
+  >
+    Like
+  </button>
+
+  You liked {% else %}
+  <button
+    type="submit"
+    name="game_id"
+    value="{{ game.id }}"
+    class="btn btn-outline-success btn-sm"
+  >
+    Like
+  </button>
+  {% endif %} - {{total_likes}} likes this game
+</form>
+{% endblock %}
